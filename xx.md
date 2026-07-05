@@ -66,6 +66,55 @@ Table: SRAM Bitcell 定义
 Table: Vendor A Memory Compiler 定义
 
 
++---------+--------------------------------+-----------------+
+| Index   | Memory Compiler                | Bitcell Type    |
++=========+================================+=================+
+| P1      | One Port Register File         | D0907 HC6T      |
++---------+--------------------------------+-----------------+
+| P2      | Two Port Register File         | D1300 8T2P_2FIN |
++---------+--------------------------------+-----------------+
+| P3      | Dual Port SRAM Compiler        | D1940 HCDP      |
++---------+--------------------------------+-----------------+
+| P4      | ROM Compiler                   | --              |
++---------+--------------------------------+-----------------+
+| P5      | Ultra High Density Single Port | D0907 HC6T      |
+|         | SRAM Compiler                  |                 |
++---------+--------------------------------+-----------------+
+| P6      | Ultra High Density Two Port    | D0907 HC6T      |
+|         | SRAM Compiler                  |                 |
++---------+--------------------------------+-----------------+
+| P7      | Single Port SRAM Compiler      | D0907 HC6T      |
++---------+--------------------------------+-----------------+
+| P8      | High Density Single Port       | D0734 HD6T      |
+|         | Single Bank SRAM Compiler with |                 |
+|         | HD cell                        |                 |
++---------+--------------------------------+-----------------+
+| P9      | High Density Single Port Multi | D0734 HD6T      |
+|         | Bank SRAM Compiler with HD     |                 |
+|         | cell                           |                 |
++---------+--------------------------------+-----------------+
+| P10     | High Density Single Port       | D0690 SHD6T     |
+|         | Single Bank SRAM Compiler with |                 |
+|         | Smaller HD cell                |                 |
++---------+--------------------------------+-----------------+
+| P11     | High Density Single Port Multi | D0690 SHD6T     |
+|         | Bank SRAM Compiler with        |                 |
+|         | Smaller HD cell                |                 |
++---------+--------------------------------+-----------------+
+| P12     | High Performace Single Port    | D0864 SHC6T     |
+|         | Single Bank SRAM Compiler with |                 |
+|         | Smaller HC cell                |                 |
++---------+--------------------------------+-----------------+
+| P13     | High Performace Single Port    | D0864 SHC6T     |
+|         | Multi Bank SRAM Compiler with  |                 |
+|         | Smaller HC cell                |                 |
++---------+--------------------------------+-----------------+
+| P14     | High Performace L1 Cache with  | D0907 HC6T      |
+|         | HC cell                        |                 |
++---------+--------------------------------+-----------------+
+
+Table: Vendor B Memory Compiler 定义
+
 
 ## Memory Compiler 工作内容
 乙方根据甲方给出的规格定义及技术资料，完成Memory Compiler设计工作以及相应测试片的设计工作。

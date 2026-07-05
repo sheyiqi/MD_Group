@@ -24,6 +24,8 @@ Table: SRAM Bitcell 定义
 Table: Vendor A Memory Compiler 定义
 
 
+Table: Vendor B Memory Compiler 定义
+
 
 ## Memory Compiler 工作内容
 乙方根据甲方给出的规格定义及技术资料，完成Memory Compiler设计工作以及相应测试片的设计工作。
