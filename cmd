@@ -1,2 +1,0 @@
- python ./offdoc.py -md ./Template/KWS8_SOW.md -excel ./Template/KWS8_SOW.xlsx -output xx.md
-python ./markdown_processor.py -input xx.md -output xx
