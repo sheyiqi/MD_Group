@@ -1,6 +1,6 @@
 
 ---
-title: "Memory Compiler Statement of Work"
+title: "Radiation Resistance Memory Compiler Statement of Work"
 
 toc-title: "Contents"
 ---
@@ -12,24 +12,13 @@ toc-title: "Contents"
 
 | 版本 | 描述 | 更新人员 | 日期 |
 | --- | ------------------- | --- | --- |
-| V01 | 初版, 发布Memory Compiler工作任务，发布Memory Compiler测试片规格 | 佘一奇 | 2026/07/30 |
-
-## 附录
-
-
-Table: SRAM Bitcell 定义
-
-\
-
-Table: Vendor A Memory Compiler 定义
-
-
+| V01 | 初版, 发布Radiation Resistance Memory Compiler工作任务，发布Memory Compiler测试片规格 | 佘一奇 | 2026/08/11 |
 
 ## Memory Compiler 工作内容
-乙方根据甲方给出的规格定义及技术资料，完成Memory Compiler设计工作以及相应测试片的设计工作。
+乙方根据甲方给出的规格定义及技术资料，完成抗辐照Memory Compiler设计工作以及相应测试片的设计工作。
 
 ### Memory Compiler 规格定义
-本项目共开发4套Memory Compiler，主要包含Single Port、Two Port、Single Port等存储器编译器。详细信息如下表：
+本项目共开发2套抗辐照Memory Compiler，主要包含One Port、Single Port等存储器编译器。详细信息如下表：
 
 Table: Memory Compiler 定义
 
@@ -51,14 +40,6 @@ Shut Down模式支持最长的时间从使能状态恢复为Standby模式，并�
 #### 支持存储器使能门控功能
 若存储器选中该功能时，存储器的地址、数据等信号受到存储器使能信号CEB的控制，会要求存储器使能信号需求更大的建立时间。同时避免地址、数据等信号跳变对存储器功耗的消耗；
 若存储器未选中该能时，存储器的地址、数据等信号不受存储器使能信号CEB的控制，减小存储器使能信号的建立时间，但同时会增大地址、数据等信号跳变对存储器的功耗。
-
-#### 支持双轨电源模式
-存储器默认支持单轨电源模式，即存储器只有一个供电电源：VDD；若选中双轨电源模式，存储器有两个供电电源：VDD和VDDC，VDDC电源为存储器阵列的供电电源，VDD为存储器外围电路的供电电源，支持实现VDD和VDDC不同电位的工作模式。
-
-
-#### 支持外围电源关断模式
-存储器在选定双规电源模式和电源管理模式下，额外支持外围电源关断模式，支持用户关断存储器外围电路的供电电源，进一步节省功耗。
-
 
 #### 支持读写余量控制
 存储器支持读写余量控制功能，所有存储器默认使能此功能，存储器余量控制使能信号（EMCE）用于控制SRAM工作在默认模式或者可调试模式：
@@ -92,11 +73,7 @@ FDSOI技术支持高效的晶体管控制。用户不仅可通过栅极控制晶
 
 ### Memory Compiler 容量范围定义
 
-Table: High Density Pseudo Two Port Register File 容量范围定义
-
 Table: High Speed One Port Register File 容量范围定义
-
-Table: High Density Two Port Register File 容量范围定义
 
 Table: Ultra High Density Single Port SRAM Compiler 容量范围定义
 
@@ -105,8 +82,6 @@ Table: Ultra High Density Single Port SRAM Compiler 容量范围定义
 ### Characterization Corner规格
 
 Table: Characterization Corner 规格
-
-> 以`TT0P72V0P9V25C`为例，0.72V为外围电路电源，0.9V为SRAM阵列电源。\
 
 
 ### Memory Compiler EDA View规格
@@ -120,7 +95,7 @@ Table: EDA View规格
 Memory Compiler测试片计划共计两个阶段：第一阶段从2026年7月20日正式启动，最终交付时间约为2026年11月30日，测试片覆盖第一章所述4套Memory Compiler的部分验证需求；第二阶段从2026年12月1日正式启动，最终预计交付时间为2027年6月30日，测试片覆盖第一章所述4套Memory Compiler的全部验证需求。
 
 ### 第一阶段测试片规格
-第一阶段测试片支持部分自研memory list和三方memory list的验证，详情请参见《KWS9_TestChip_list_20260705》。
+第一阶段测试片支持部分自研memory list和三方memory list的验证，详情请参见《KWS10_TestChip_list_20260801》。
 第一阶段测试片采用FT测试，使用ATE测试设备对封装后芯片进行测试。测试片规格信息如下：
 
 Table: 第一阶段测试片信息
@@ -140,6 +115,12 @@ Table: 第一阶段测试片信息
 ##### Retention测试
 测试片通过常压读写操作，随后Standby模式下降低sram供电电压，随后升高到常压进行读操作。
 
+##### TID测试
+这项测试评估器件在长期、缓慢累积的电离辐射下，性能的永久性退化。辐射会在材料中产生电荷，导致阈值电压漂移、漏电流增加等。
+TID总剂量不低于100 krad(Si)。
+
+##### SEE测试
+SEE测试包含SEU(单粒子翻转)和SEL(单粒子闩锁)。辐照源不低于75MeVcm^2/mg。
 
 #### 第一阶段测试片开发计划
 
@@ -182,6 +163,13 @@ Table: 第二阶段测试片信息
 
 ##### MBIST高速测试
 测试片支持使用 SMarchCHKBvcd 算法对 Memory Instance 进行额定最高工作频率进行高速测试。请留意双端口SRAM 仅进行同步时钟测试，且需要留意同地址操作在算法激励中的规避。
+
+##### TID测试
+这项测试评估器件在长期、缓慢累积的电离辐射下，性能的永久性退化。辐射会在材料中产生电荷，导致阈值电压漂移、漏电流增加等。
+TID总剂量不低于100 krad(Si)。
+
+##### SEE测试
+SEE测试包含SEU(单粒子翻转)和SEL(单粒子闩锁)。辐照源不低于75MeVcm^2/mg。
 
 ##### 时序测试
 测试片支持对 Memory 实例的关键信号的建立时间、保持时间以及数据读出时间进行测量
