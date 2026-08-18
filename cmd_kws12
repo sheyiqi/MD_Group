@@ -1,0 +1,2 @@
+ python ./offdoc.py -md ./Template/KWS12_SOW.md -excel ./Template/KWS12_SOW.xlsx -output xx.md
+python ./markdown_processor.py -input xx.md -output KWS12_Memory_Compiler_SOW_20260811
